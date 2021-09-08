@@ -33,10 +33,11 @@ namespace WriterFile.Api
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     var settings = config.Build();
+
                     Log.Logger = new LoggerConfiguration()
                         .Enrich.FromLogContext()
                         .MinimumLevel.Information()
-                        .WriteTo.File("C:\\logs\\log.txt", rollingInterval: RollingInterval.Day)
+                        .WriteTo.File(settings.GetSection("PathSaveLogs").Value, rollingInterval: RollingInterval.Day)
                         .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
                         .CreateLogger();
                 })

@@ -10,12 +10,10 @@ namespace WriterFile.Api.Controllers
     public class WriterController
     {
         private readonly ILogger<WriterController> _logger;
-        private readonly StatusCodeResult _statusCodeResult;
 
         public WriterController(ILogger<WriterController> logger)
         {
             _logger = logger;
-            _statusCodeResult = new StatusCodeResult(200);
         }
 
 
